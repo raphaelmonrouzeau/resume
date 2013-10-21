@@ -1,0 +1,76 @@
+body {
+	font-family: "Helvetica Neue", "Helvetica", "Bitstream Charter", "Times New Roman";
+}
+h1 {
+	font-size:200%;
+	font-weight:lighter;
+	margin:2em 0 0.5em 0;
+    color:#444;
+}
+header {
+	text-align:center;
+	margin-bottom:2em;
+}
+.what-where-when {
+	width:100%;
+	font-weight:lighter;
+    font-size: 125%;
+    color: #333;
+    /*color: #a13;*/
+    /*color: #209;*/
+}
+.what-where-when > div {
+	display: inline-block;
+	width:50%;
+	text-align:right;
+    margin:0.667em 0 0.333em 0;
+}
+.what-where-when > div:first-child {
+	text-align:left;
+}
+.what-where-when > div > div {
+    display: inline-block;
+    width: 49%;
+    text-align: right;
+}
+.what-where-when > div > div:first-child {
+    text-align:left;
+}
+ul {
+	margin-top:0px;
+    list-style-type: square;
+    list-style-type: em-dash;
+}
+.desc-n-keywords {
+	width:100%;
+}
+.desc-n-keywords > div {
+	display: inline-block;
+	width:33%;
+	text-align:right;
+}
+.desc-n-keywords > div:first-child {
+	text-align:left;
+	width:66%;
+}
+td { vertical-align: top; padding-bottom: 0.25em; }
+.technical td:first-child {
+	padding-left:0px;
+    text-align: right;
+}
+section {
+	margin-bottom:2em;
+}
+.email {
+	unicode-bidi:bidi-override;
+	direction:rtl;
+}
+.accomplishments { width: 100%; }
+.accomplishments td { width: 50%; text-align: right; }
+.accomplishments td:first-child { text-align: left; }
+.languages { color: #800000; }
+.framework { color: #008080; }
+.databases { color: #008000; }
+.platforms { color: #000080; }
+.tools     { color: #800080; }
+

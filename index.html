@@ -1,0 +1,355 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Thanks to http://cdolivei.github.io/resume/ and his blog post -->
+  <head>
+    <meta charset="UTF-8">
+    <title>Resume of Raphaël Monrouzeau</title>
+    <link rel="stylesheet" href="css/normalize.css" media="all"/>
+    <link rel="stylesheet" href="css/web.css" media="screen"/>
+    <link rel="stylesheet" href="css/print.css" media="print"/>
+    
+    <script type="text/javascript">
+      // IE 8+ fix: http://blog.whatwg.org/supporting-new-elements-in-ie#comment-40743
+      document.createElement("header");
+      document.createElement("section");
+    </script>
+  </head>
+  <body>
+  
+    <header>
+      <h1>Raphaël Monrouzeau</h1>
+      <div>{% include contact.html %}</div>
+      <div><a href="https://github.com/raphaelmonrouzeau">github.com/raphaelmonrouzeau</a> &#x2022; <a href="https://bitbucket.org/raphaelmonrouzeau">bitbucket.org/raphaelmonrouzeau</a></div>
+    </header>
+    
+    <section id="technical">
+      <h1>Technical Skills</h1>
+      <table class="technical">
+        <tr>
+          <td>Programming&nbsp;Languages:&nbsp;</td>
+          <td>C / C++, Python, JavaScript, Scheme / Lisp, Go, various assembly languages, Perl,PHP...</td>
+        </tr>
+        <tr>
+          <td>Other&nbsp;Skills:&nbsp;</td>
+          <td>HTML[5], CSS, jQuery, Django, SQL, Git / Mercurial / Subversion</td>
+        </tr>
+        <tr>
+          <td>Operating&nbsp;Systems:&nbsp;</td>
+          <td>Unix/Linux, Mac</td>
+        </tr>
+      </table>
+    </section>
+    
+    <section id="experience">
+      <h1>Work Experience</h1>
+      <div class="entry">
+        <div class="what-where-when">
+          <div><div>Senior programmer</div><div>Orange, Paris</div></div><div>oct 2012 – now</div>
+        </div>
+        <table class="accomplishments">
+          <tr>
+            <td>– <em>Pilotd</em>
+
+              A local JSON reverse-proxy to data layers web-services (almost
+              everyone of them SOAP).
+                
+              Runs as a service, talks HTTP. Its purpose is to avoid writing
+              libraries for every language used on the platform. By default it
+              listens lo the loopback interface, making IPC overheads very low.
+              
+              All user-facing services can use it natively (HTTP/JSON) without
+              having to be SOAP clients and its API better matches callers'
+              needs, thus it requires little to no wrapper and is used as a
+              library.
+              
+              But as it is a service you can easily have more than one version
+              running at the same time making upgrades and migrations, even
+              partial and long ones, easier.
+
+              The daemon is written in C, statically compiled to ease
+              deployment. The idea of its architecture comes from micro-kernel
+              services.
+
+            </td>
+            <td>
+              <span class="languages"> C, </span>
+              <span class="tools"> libuv </span>
+            </td>
+          </tr>
+          <tr>
+            <td>– <em>Event server</em>
+
+              The event server is more a Zookeeper-like than a standard event
+              server. The previous version stored event in three MySQL tables:
+              services, identities, events and had problems coping with charge
+              despite being coded as a C++ FCGI.
+
+              I was in charge of a rewrite of the backend. I ended up using
+              only one table (conditions) whose primary key was a product of
+              the service and the identity. Also, rather than storing one line
+              for each event I made the server store one line with the number
+              of remaning events bfore condition is met. 
+
+              This made it handle the load of calls from paid SMS,
+              authentication blacklisting and lost password blacklisting
+              combined.
+
+            </td>
+            <td>
+              <span class="languages"> C++, </span>
+              <span class="databases"> MySQL, </span>
+              <span class="tools"> Apache, mod_fcgid </span>
+            </td>
+          </tr>
+          <tr>
+            <td>– Added support for HTTPS POST in HTTP, JSONP and rewrote HTTPS support for the authent form</td>
+            <td>
+              <span class="languages"> PHP, Javascript, </span>
+              <span class="tools"> Apache </span>
+            </td>
+          </tr>
+          <tr>
+            <td>– Added remote control support on the TV's authent form</td>
+            <td>
+              <span class="languages"> Javascript, </span>
+              <span class="tools"> Opera Embedded </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="entry">
+        <div class="what-where-when">
+          <div><div>Senior programmer</div><div>SFR, La Défense</div></div><div>feb 2012 – oct 2012</div>
+        </div>
+        <table class="accomplishments">
+          <tr>
+            <td>– Backend for the SFR Shopping mobile application</td>
+            <td>
+              <span class="languages"> Javascript, </span>
+              <span class="framework"> Node.JS, </span>
+              <span class="databases"> Redis, </span>
+              <span class="platforms"> FreeBSD </span>
+            </td>
+          </tr>
+          <tr>
+            <td>– Backend for archival and retrieval in the Mobile Security software suite</td>
+            <td>
+              <span class="languages"> Python, </span>
+              <span class="framework"> Tornado, </span>
+              <span class="databases"> MongoDB, </span>
+              <span class="platforms"> FreeBSD </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="entry">
+        <div class="what-where-when">
+          <div><div>Lead developer</div><div>miLibris, Paris France</div></div><div>dec 2009 – feb 2012</div>
+        </div>
+        <table class="accomplishments">
+          <tr>
+            <td>– Developed a DRM in C for iOS and Android</td>
+            <td>
+              <span class="languages"> C, Objective C,</span>
+              <span class="platforms"> iOS, Android, </span>
+              <span class="tools"> xCode </span>
+            </td>
+          </tr>
+          <tr>
+            <td>–
+              Built and maitained the first and second versions of the platform
+              for e-reading (leader in France)
+            </td>
+            <td>
+              <span class="languages"> Python, Javascript, </span>
+              <span class="framework"> Pyramid, Node.JS, </span>
+              <span class="databases"> PostgreSQL, MongoDB, </span>
+              <span class="platforms"> Linux, </span>
+              <span class="tools"> Puppet </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="entry">
+        <div class="what-where-when">
+          <div><div>Lead developer</div><div>IC4E, St Petersbourg Russian federation</div></div><div>apr 2008 – dec 2009</div>
+        </div>
+        <table class="accomplishments">
+          <tr>
+            <td>– Developed a website generator </td>
+            <td>
+              <span class="languages"> C, Objective C,</span>
+              <span class="platforms"> iOS, Android, </span>
+              <span class="tools"> xCode </span>
+            </td>
+          </tr>
+          <tr>
+            <td>–
+              Built and maitained the first and second versions of the platform
+              for e-reading (leader in France)
+            </td>
+            <td>
+              <span class="languages"> Python, Javascript, </span>
+              <span class="framework"> Pyramid, Node.JS, </span>
+              <span class="databases"> PostgreSQL, MongoDB, </span>
+              <span class="platforms"> Linux, </span>
+              <span class="tools"> Puppet </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="entry">
+        <div class="what-where-when">
+          <div><div>Founder</div><div>NNK, Paris</div></div><div>jul 2006 – apr 2008</div>
+        </div>
+        <table class="accomplishments">
+          <tr>
+            <td>–  </td>
+            <td>
+              <span class="languages"> C, Objective C,</span>
+              <span class="platforms"> Foundry</span>
+              <span class="tools"> xCode </span>
+            </td>
+          </tr>
+          <tr>
+            <td>–
+              Built and maitained the first and second versions of the platform
+              for e-reading (leader in France)
+            </td>
+            <td>
+              <span class="languages"> Python, Javascript, </span>
+              <span class="framework"> Pyramid, Node.JS, </span>
+              <span class="databases"> PostgreSQL, MongoDB, </span>
+              <span class="platforms"> Linux, </span>
+              <span class="tools"> Puppet </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="entry">
+        <div class="what-where-when">
+          <div><div>Lead developer</div><div>Omatis, Paris</div></div><div>mar 2004 – jun 2006</div>
+        </div>
+        <table class="accomplishments">
+          <tr>
+            <td>–
+
+              Another company was creating an SSL reverse proxy appliance. We
+              were in charge of developping the linux driver for the crypto
+              accelerating card that powered the future appliance, and a
+              cryptoengine for OpenSSL.
+
+            </td>
+            <td>
+              <span class="languages"> C, x86/i386 ASM/Assembly </span>
+              <span class="platforms"> Linux </span>
+              <span class="tools"> GCC </span>
+            </td>
+          </tr>
+          <tr>
+            <td>–
+
+              Wrote a solution for public call for offers complying with french
+              laws. It followed the same workflow than usually, but everything
+              was dematerialized (e-mails instead of mails) and
+              cryptographically secure (safes were replaced with encryption).
+
+            </td>
+            <td>
+              <span class="languages"> Shell script, Perl </span>
+              <span class="platforms"> Linux </span>
+              <span class="tools"> QMail, vpopmail, ezmlm </span>
+            </td>
+          </tr>
+          <tr>
+            <td>–
+
+              "Gendarmerie" (French army corpse dedicated to enforcement of the
+              law on rural territory) declared they were in need of a solution
+              to secure their Windows installations from the boot time.
+              Solution involved a custom Debian installation CD (based on
+              debian-installer, new at the time) and two grub modules: one to
+              handle a USB mouse with fingerprint and pin readers, another to
+              cipher/uncipher hard drive content before booting Windows.
+
+              A prototype was made and shown but Gendarmerie's budget lines for
+              the project were cancelled.
+
+            </td>
+            <td>
+              <span class="languages"> C, x86/i386 ASM/Assembly </span>
+              <span class="platforms"> Linux, Grub, Windows </span>
+              <span class="tools"> Debian installer </span>
+            </td>
+          </tr>
+          <tr>
+            <td>–
+
+              Helped maintain websites and mailing-lists of the portfolio of
+              customers of Omatis including MCM and all the other cable
+              channels of the MCM group.
+
+              This was my first experience of high traffic websites.
+
+            </td>
+            <td>
+              <span class="languages"> Bourne shell script, Perl </span>
+              <span class="platforms"> Gentoo Linux, Debian, NetBSD </span>
+              <span class="tools"> Apache, Heartbeat (Linux HA), Qmail, PureFTPd </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="entry">
+        <div class="what-where-when">
+          <div><div>Intern, Bordeaux</div><div>Caisses d'Épargne (CTRCEAPC)</div></div><div>jun 2002 – nov 2002</div>
+        </div>
+        <table class="accomplishments">
+          <tr>
+            <td>–
+
+              Reverse-enginered a DOS application which controlled doorlocks
+              and card readers and inputed entries and exits into the human
+              resources software.
+
+              Made it compatible with the new law and accept vacancies orders
+              from a Lotus domino database. Then did most of the backend code
+              for the vacancy requests forms.
+
+            </td>
+            <td>
+              <span class="languages"> x86/i386 ASM/Assembly, Lotuscript </span>
+              <span class="platforms"> DOS, Windows </span>
+              <span class="tools"> Edit, Domino designer, NASM </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <section id="education">
+      <h1>Education and Training</h1>
+      <div class="what-where-when">
+          <div><div><!-- Engineering degree in-->Masters of Computer Sciences</div>
+               <div>Epitech, Paris</div></div><div>2002-2004</div>
+      </div>
+      <table class="accomplishments">
+        <tr>
+          <td>–
+            Chef d'œuvre: Zetein, An L4 compatible micro-kernel whose messages
+            are LISP data and services are written in Scheme
+          </td>
+          <td>
+            <span class="languages"> C, LISP, Scheme, Assembly, </span>
+            <span class="platforms"> L4, </span>
+            <span class="tools"> GCC, Grub </span>
+          </td>
+        </tr>
+      </table>
+      <div class="what-where-when">
+          <div><div>Bachelor of Computer Sciences</div><div>Epitech, Paris</div></div><div>1999-2002</div>
+      </div>
+    </section>
+  </body>
+</html>

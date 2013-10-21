@@ -1,0 +1,10 @@
+@import url('default.css');
+
+body {
+	width: 8.5in;
+	margin-right: 0.73cm;
+}
+a {
+	color:inherit;
+	text-decoration:none;
+}
