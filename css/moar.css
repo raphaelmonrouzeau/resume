@@ -3,9 +3,10 @@
 h1,h2,h3,h4,h5 { color: #520; }
 #login { margin-bottom: 3em; }
 body{ background: #f0fce0; }
+body{ background: #ebebeb; }
 .current { background-color: #b06080; padding: 0 0.75em; color: #ffffff; }*/
 
-body{ background: #f8f8f8; }
+body{ background: #ffffff; }
 .technical h2, .technical h3 { color: #04b; }
 .experience h2, .experience h3 { color: #b20; }
 .education h2, .education h3 { color: #092; }
