@@ -1,0 +1,15 @@
+/*.panel { background: #f0fce0; border: none; }
+#top-panel { background: url(/images/cream.png) 100% 50% no-repeat #f0fce0; border: none; }
+h1,h2,h3,h4,h5 { color: #520; }
+body{ background: #f0fce0; }
+#login { margin-bottom: 3em; }
+.current { background-color: #b06080; padding: 0 0.75em; color: #ffffff; }*/
+.technical h2, .technical h3 { color: #04b; }
+.experience h2, .experience h3 { color: #b20; }
+.education h2, .education h3 { color: #092; }
+.languages { color: #800000; }
+.framework { color: #008080; }
+.databases { color: #008000; }
+.platforms { color: #000080; }
+.tools     { color: #800080; }
+
