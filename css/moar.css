@@ -9,13 +9,13 @@ body{ background: #ebebeb; }
 /*html { font-size: 133%; }*/
 body{ background: #ffffff; }
 
-header { padding-bottom: 5em; }
+header { padding-bottom: 6em; }
 
 .technical h2,  .technical h3,  .technical h4 { color: #04b; }
 .experience h2, .experience h3, .experience h4 { color: #b20; }
 .education h2,  .education h3,  .education h4 { color: #092; }
 
-.technical>.row, .experience>.row, .education>.row { margin-bottom: 5em; }
+.technical>.row, .experience>.row, .education>.row { margin-bottom: 4em; }
 
 .experience>.row:nth-child(even) h2, .experience>.row:nth-child(even) h3, .experience>.row:nth-child(even) h4 { color: #f40; }
 
