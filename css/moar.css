@@ -6,10 +6,28 @@ body{ background: #f0fce0; }
 body{ background: #ebebeb; }
 .current { background-color: #b06080; padding: 0 0.75em; color: #ffffff; }*/
 
+/*html { font-size: 133%; }*/
 body{ background: #ffffff; }
-.technical h2, .technical h3 { color: #04b; }
-.experience h2, .experience h3 { color: #b20; }
-.education h2, .education h3 { color: #092; }
+
+header { padding-bottom: 5em; }
+
+.technical h2,  .technical h3,  .technical h4 { color: #04b; }
+.experience h2, .experience h3, .experience h4 { color: #b20; }
+.education h2,  .education h3,  .education h4 { color: #092; }
+
+.technical>.row, .experience>.row, .education>.row { margin-bottom: 5em; }
+
+.experience>.row:nth-child(even) h2, .experience>.row:nth-child(even) h3, .experience>.row:nth-child(even) h4 { color: #f40; }
+
+/*.experience>.row>.nine.columns>.row:nth-child(even) h2,
+.experience>.row>.nine.columns>.row:nth-child(even) h3,
+.experience>.row>.nine.columns>.row:nth-child(even) h4 { color: #f40; }*/
+/*.experience>.row>.nine.columns>.row:nth-child(even) h4 { color: #f07; }*/
+
+.education>.row>.nine.columns>.row:nth-child(even) h2,
+.education>.row>.nine.columns>.row:nth-child(even) h3,
+.education>.row>.nine.columns>.row:nth-child(even) h4 { color: #0c0; }
+
 .languages { color: #800000; }
 .framework { color: #008080; }
 .databases { color: #008000; }

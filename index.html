@@ -31,7 +31,8 @@
 
   <!-- Header and Nav -->
   <header class="row" class="panel" style="text-align: center">
-    <h1>Raphaël Monrouzeau</h1>
+    <h1>Raphaël <span style="font-variant: small-caps">Monrouzeau</span></h1>
+    <h2>Senior programmer (III)</h2>
     <div>{% include contact.html %}</div>
   </header>
   <!-- End Header and Nav -->
@@ -42,11 +43,11 @@
     <table style="margin: 2em auto">
       <tr>
         <td>Programming&nbsp;Languages:&nbsp;</td>
-        <td>C / C++, Python, JavaScript, Scheme / Lisp, Go, various assembly languages, Perl,PHP...</td>
+        <td>C / C++, Python, JavaScript, Scheme / Lisp, Haskell, Go, various assembly languages, Shell script, Perl,PHP...</td>
       </div>
       <tr>
         <td>Other&nbsp;Skills:&nbsp;</td>
-        <td>HTML[5], CSS, jQuery, Django, SQL, Git / Mercurial / Subversion</td>
+        <td>HTML[5], CSS, jQuery, Django, MySQL / PostgreSQL / Redis / MongoDB, Git / Mercurial / Subversion, Puppet / Chef / Ansible / Salt</td>
       </tr>
       <tr>
         <td>Operating&nbsp;Systems:&nbsp;</td>
@@ -56,13 +57,14 @@
   </div>
   </section>
   
-  <section class="experience">
+  <section class="experience" id="experience">
   <div class="row">
-    <h2>Work Experience</h2>
-  </div>
-  <div class="row">
+    <a href="#experience"><h2>Work Experience</h2></a>
     <div class="three columns">
-      <div><h4>Senior programmer</h4><div>Orange, Paris</div></div><div>oct 2012 – now</div>
+      <h4>Senior programmer</h4>
+      <div>Orange</div>
+      <div>Paris</div>
+      <div>oct 2012 – now</div>
     </div>
     <div class="nine columns">
       <div class="row">
@@ -71,17 +73,16 @@
           <h3>Pilotd</h3>
 
           <p> A local JSON reverse-proxy to data layers web-services (almost
-          everyone of them SOAP). </p>
+          all of them SOAP). </p>
             
           <p> Runs as a service, talks HTTP. Its purpose is to avoid writing
           libraries for every language used on the platform. By default it
           listens lo the loopback interface, making IPC overheads very low.
           </p>
           
-          <p> All user-facing services can use it natively (HTTP/JSON)
-          without having to be SOAP clients and its API better matches
-          callers' needs, thus it requires little to no wrapper and is used
-          as a library. </p>
+          <p> All user-facing services can use it natively (HTTP/JSON) without
+          having to be SOAP clients and its API better matches callers' needs,
+          thus it requires little to no wrapper, and is used as a library. </p>
           
           <p> But as it is a service you can easily have more than one
           version running at the same time making upgrades and migrations,
@@ -171,7 +172,10 @@
   </div>
   <div class="row">
     <div class="three columns">
-      <div><h4>Senior programmer</h4><div>SFR, La Défense</div></div><div>feb 2012 – oct 2012</div>
+      <h4>Senior programmer</h4>
+      <div>SFR</div>
+      <div>La Défense</div>
+      <div>feb 2012 – oct 2012</div>
     </div>
     <div class="nine columns">
       <div class="row">
@@ -219,7 +223,10 @@
   </div>
   <div class="row">
     <div class="three columns">
-      <div><h4>Lead developer</h4><div>miLibris, Paris France</div></div><div>dec 2009 – feb 2012</div>
+      <h4>Lead developer</h4>
+      <div>miLibris</div>
+      <div>Paris</div>
+      <div>dec 2009 – feb 2012</div>
     </div>
     <div class="nine columns">
       <div class="row">
@@ -227,7 +234,8 @@
 
           <h3>Cryptent</h3>
 
-          <p> Developed a DRM in C for iOS and Android. </p>
+          <p> For comic books, newspapers and magazines. Decrypted at runtime,
+          in memory, only what was in use. </p>
 
         </div>
         <div class="three columns">
@@ -243,29 +251,53 @@
           <h3>Publication</h3>
 
           <p> Built and maitained the first and second versions of the platform
-          for e-reading (leader in France). </p>
+          for e-reading (leader in France). Servers configuration was
+          automated, catalog views for each consumer and user-generated events
+          were stored in NoSQL while master data were stored in PostgreSQL.
+          There was monitoring, web admin interface as an "app", backups...
+          </p>
 
         </div>
         <div class="three columns">
           <h3>&nbsp;</h3>
           <span class="languages"> Python, Javascript, </span>
-          <span class="framework"> Pyramid, Node.JS, </span>
+          <span class="framework"> Pyramid, Node.JS, jQuery, Capuccino, </span>
           <span class="databases"> PostgreSQL, MongoDB, </span>
           <span class="platforms"> Linux, </span>
-          <span class="tools"> Puppet </span>
+          <span class="tools"> Puppet, Git </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>Steganography</h3>
+
+          <p> I decided to embed steganographically an user id code into ePubs
+          available on the web after customer reports that their content was
+          redistributed illegally </p>
+
+        </div>
+        <div class="three columns">
+          <h3>&nbsp;</h3>
+          <span class="languages"> Python, </span>
+          <span class="platforms"> Linux, </span>
+          <span class="tools"> Steghide </span>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="three columns">
-      <div><h4>Lead developer</h4><div>IC4E, St Petersbourg Russian federation</div></div><div>apr 2008 – dec 2009</div>
+      <h4>Lead developer</h4>
+      <div>IC4E</div>
+      <div>St Petersbourg (Russian federation)</div>
+      <div>apr 2008 – dec 2009</div>
     </div>
     <div class="nine columns">
       <div class="row">
         <div class="nine columns">
 
-          <h3></h3>
+          <h3>&nbsp;</h3>
 
           <p> IC4E is an american company operating in Russia, they needed
           their customers to be able to browse their ever growing catalog and
@@ -281,6 +313,7 @@
 
         </div>
         <div class="three columns">
+          <h3>&nbsp;</h3>
           <span class="languages"> C, Objective C,</span>
           <span class="platforms"> Linux, Windows </span>
           <span class="tools"> Script.aculo.us, Windows DRM server </span>
@@ -290,7 +323,10 @@
   </div>
   <div class="row">
     <div class="three columns">
-      <div><h4>Founder</h4><div>NNK, Paris</div></div><div>jul 2006 – apr 2008</div>
+      <h4>Founder</h4>
+      <div>NNK</div>
+      <div>La Défense</div>
+      <div>jul 2006 – apr 2008</div>
     </div>
     <div class="nine columns">
       <div class="row">
@@ -317,7 +353,10 @@
   </div>
   <div class="row">
     <div class="three columns">
-      <div><h4>Lead developer</h4><div>Omatis, Paris</div></div><div>mar 2004 – jun 2006</div>
+      <h4>Lead developer</h4>
+      <div>Omatis</div>
+      <div>Paris</div>
+      <div>mar 2004 – jun 2006</div>
     </div>
     <div class="nine columns">
       <div class="row">
@@ -404,13 +443,16 @@
   </div>
   <div class="row">
     <div class="three columns">
-      <div><h4>Intern, Bordeaux</h4><div>Caisses d'Épargne (CTRCEAPC)</div></div><div>jun 2002 – nov 2002</div>
+      <h4>Intern</h4>
+      <div>Caisses d'Épargne (CTRCEAPC)</div>
+      <div>Bordeaux</div>
+      <div>jun 2002 – nov 2002</div>
     </div>
     <div class="nine columns">
       <div class="row">
         <div class="nine columns">
 
-          <h3> <em>35 heures</em> law support</h3>
+          <h3> Support of the law of <em>35 heures</em></h3>
 
           <p> Reverse-enginered a DOS application which controlled doorlocks
           and card readers and inputed entries and exits into the human
@@ -433,16 +475,16 @@
   </div>
   </section>
 
-  <section class="education">
+  <section class="education" id="education">
   <div class="row">
-    <h2>Education and Training</h2>
-  </div>
-  <div class="row">
+    <a href="#education"><h2>Education and Training</h2></a>
     <div class="three columns">
         <!-- <h4>-- Engineering degree in -- Masters of Computer Sciences</h4> -->
-      <h4>&nbsp;</h4>
-      <div>Epitech, Paris</div>
+      <h4>Student, Paris</h4>
+      <div>Epitech</div>
+      <div>Paris</div>
       <div>2002-2004</div>
+      <div>1999-2002</div>
     </div>
     <div class="nine columns">
       <div class="row">
@@ -450,8 +492,9 @@
 
           <h3>Masters of Computer Sciences</h3>
             
-          <p> Chef d'œuvre: Zetein, An L4 compatible micro-kernel whose messages
-          are LISP data and services are written in Scheme </p>
+          <p> The last two years let students choose the subject of their final
+          project. For us it was Zetein, an L4 compatible micro-kernel whose
+          messages are LISP data and services are written in Scheme. </p>
 
         </div>
         <div class="three columns">
@@ -461,15 +504,6 @@
           <span class="tools"> GCC, Grub </span>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="three columns">
-      <h4>&nbsp;</h4>
-      <div>Epitech, Paris</div>
-      <div>1999-2002</div>
-    </div>
-    <div class="nine columns">
       <div class="row">
         <div class="nine columns">
 
@@ -479,6 +513,10 @@
           project driven, in teams, everyone in team had the same mark and
           sometimes teams were randomly assigned. </p>
 
+        </div>
+        <div class="three columns">
+          <h3>&nbsp;</h3>
+          <span class="tools"> Computer sciences </span>
         </div>
       </div>
     </div>
