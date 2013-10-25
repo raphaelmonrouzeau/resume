@@ -29,6 +29,19 @@
 </head>
 <body>
 
+  <!--
+  <p class="show-for-small       "> show for small (&lt; 768px) </p>
+  <p class="show-for-medium-down "> show for medium down (&lt; 1280px) </p>
+  <p class="show-for-medium      "> show for medium (768px - 1280px) </p>
+  <p class="show-for-medium-up   "> show for medium up (&gt;= 768px) </p>
+  <p class="show-for-large-down  "> show for large down (&lt; 1440px) </p>
+  <p class="show-for-large       "> show for large (1280px - 1440px) </p>
+  <p class="show-for-large-up    "> show for large up (&gt;= 1280px) </p>
+  <p class="show-for-xlarge      "> show for xlarge (&gt;= 1440px) </p>
+  -->
+ <!-- medium down = 768px) </p> -->
+ <!-- large down 1280px) </p> -->
+
   <!-- Header and Nav -->
   <header class="row" class="panel" style="text-align: center">
     <h1>Raphaël <span style="font-variant: small-caps">Monrouzeau</span></h1>
@@ -94,9 +107,10 @@
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> C, </span>
           <span class="tools"> libuv </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
       <div class="row">
@@ -121,10 +135,11 @@
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> C++, </span>
           <span class="databases"> MySQL, </span>
           <span class="tools"> Apache, mod_fcgid </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
       <div class="row">
@@ -137,18 +152,35 @@
           external resources by script, from locations they even can't predict
           and may be available in HTTPS or no. </p>
           
-          <p> I had to make the form support both HTTP and HTTPS, with login
-          POST, javascript activated or not, being always HTTPS, and without
-          browser warnings. </p>
+          <p> I had to make the form support both HTTP and HTTPS, but:</p>
+         
+          <ul>
+            <li> with POST always being sent over HTTPS, </li>
+            <li> whether javascript is activated or not, </li>
+            <li> without browser warnings, </li>
+            <li> with a green padlock, </li>
+            <li> from IE6 to the present. </li>
+          </ul>
           
-          <p> Actually this is not simple at all: POST in HTTP, JSONP and
-          rewrote HTTPS support for the authent form </p>
+          <p> It was less easy than it sounds, browsers all have various
+          mechanisms in place to forbid this kind of behaviour, especially IE.
+          I ended up mixing iframes to HTTP empty source, copying forms over,
+          polling POST results from iframes, etc. </p>
+
+          <p> Another problem we had with the new authent form is it was taking
+          too much CPU. To drop it I suggested introducing memcache on the
+          platform and store the results of the most expensive calls to it. I
+          ended up being in charge of the changes. This required an heavy
+          refactoring of the code in the component <em>and</em> associates.
+          </p>
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> PHP, Javascript, </span>
-          <span class="tools"> Apache </span>
+          <span class="databases"> Memcached, </span>
+          <span class="tools"> Apache, mod_fcgid / FCGI </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
       <div class="row">
@@ -163,9 +195,10 @@
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> Javascript, </span>
           <span class="tools"> Opera Embedded </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
     </div>
@@ -183,18 +216,29 @@
 
           <h3>SFR Shopping</h3>
 
-          <p> SFR wanted to launch a mobile app with geolocalization which would federate various promotion providers. </p>
+          <p> SFR wanted to launch a mobile app with geolocalization which
+          would federate various promotion providers. </p>
           
-          <p> I was in charge of the backend </p>
+          <p> I was in charge of the backend, it was federating the catalogs of
+          the providers calling their API on the flow (caching results that
+          depend on the location and search query of the users is quite
+          ambitious), detecting similar products, indicating physical shops
+          locations, proposing offers on similar products online... </p>
         
+          <p> I had to modify the Node.JS daemonize2 library for my control
+          tool to well pass arguments to the future daemon (patch on Github).
+          </p>
+
         </div>
 
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> Javascript, </span>
           <span class="framework"> Node.JS, Express, </span>
           <span class="databases"> Redis, </span>
-          <span class="platforms"> FreeBSD </span>
+          <span class="platforms"> FreeBSD, </span>
+          <span class="tools"> JSON </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
       <div class="row">
@@ -210,13 +254,20 @@
           of these backups. Only some metadata were searchable as backups are
           encrypted mobile side, and key management is another service. </p>
         
+          <p> I had to modify Tornado to be able to log all events of the life
+          of the connection, including reveiving frames, I also had to modify a
+          daemonize python library so that we could use the fab module to start
+          server by SSH. </p>
+
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> Python, </span>
           <span class="framework"> Tornado, </span>
           <span class="databases"> MongoDB, </span>
-          <span class="platforms"> FreeBSD </span>
+          <span class="platforms"> FreeBSD, </span>
+          <span class="tools"> Fab </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
     </div>
@@ -239,10 +290,11 @@
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> C, Objective C,</span>
           <span class="platforms"> iOS, Android, </span>
           <span class="tools"> xCode </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
       <div class="row">
@@ -254,17 +306,18 @@
           for e-reading (leader in France). Servers configuration was
           automated, catalog views for each consumer and user-generated events
           were stored in NoSQL while master data were stored in PostgreSQL.
-          There was monitoring, web admin interface as an "app", backups...
-          </p>
+          There was monitoring, web admin interface as an single-page "app",
+          backups...  </p>
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> Python, Javascript, </span>
           <span class="framework"> Pyramid, Node.JS, jQuery, Capuccino, </span>
           <span class="databases"> PostgreSQL, MongoDB, </span>
           <span class="platforms"> Linux, </span>
           <span class="tools"> Puppet, Git </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
       <div class="row">
@@ -274,14 +327,23 @@
 
           <p> I decided to embed steganographically an user id code into ePubs
           available on the web after customer reports that their content was
-          redistributed illegally </p>
+          redistributed illegally. </p>
+
+          <p> I didn't want to store content in one version for each content
+          subscriber. And I didn't want to dynamically apply steganography then
+          repackage content before user was accepted to download. So I resorted
+          to create a fixed number of versions, configurable, depending upon
+          the number of suscribers, and assigned one version to each suscriber.
+          This didn't permit to detect the offender on its first injury but
+          three times showed enough. </p>
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> Python, </span>
           <span class="platforms"> Linux, </span>
           <span class="tools"> Steghide </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
     </div>
@@ -313,10 +375,11 @@
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> C, Objective C,</span>
           <span class="platforms"> Linux, Windows </span>
           <span class="tools"> Script.aculo.us, Windows DRM server </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
     </div>
@@ -336,17 +399,19 @@
 
           <p> Maintained websites of Quidea, Inc. Including
           "commentcamarche.net" (which translates as "how does that work"),
-          ranked 47 on Alexa.  Spawned three datacenters, multiple routers.
-          Maintained other big accounts as well and developped some websites.
-          Made some VoIP along the way.  </p>
+          ranked 47 on Alexa. Spawned three datacenters, multiple routers. </p>
+
+          <p> Also maintained the websites of other big accounts (including bugbuster) as well and developped some
+          websites. Made some VoIP along the way.  </p>
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> PHP, </span>
           <span class="databases"> MySQL, </span>
           <span class="platforms"> Linux, </span>
           <span class="tools"> Foundry, Nagios, Asterisk, Munin, Cacti </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
     </div>
@@ -371,10 +436,11 @@
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> C, x86/i386 ASM/Assembly </span>
           <span class="platforms"> Linux </span>
           <span class="tools"> GCC </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
       <div class="row">
@@ -390,10 +456,11 @@
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> Shell script, Perl </span>
           <span class="platforms"> Linux </span>
           <span class="tools"> QMail, vpopmail, ezmlm </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
       <div class="row">
@@ -414,10 +481,11 @@
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> C, x86/i386 ASM/Assembly </span>
           <span class="platforms"> Linux, Grub, Windows </span>
           <span class="tools"> Debian installer </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
       <div class="row">
@@ -433,10 +501,11 @@
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> Bourne shell script, Perl </span>
           <span class="platforms"> Gentoo Linux, Debian, NetBSD </span>
           <span class="tools"> Apache, Heartbeat (Linux HA), Qmail, PureFTPd </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
     </div>
@@ -464,10 +533,11 @@
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> x86/i386 ASM/Assembly, Lotuscript </span>
           <span class="platforms"> DOS, Windows </span>
           <span class="tools"> Edit, Domino designer, NASM </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
     </div>
@@ -498,10 +568,11 @@
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> C, LISP, Scheme, Assembly, </span>
           <span class="platforms"> L4, </span>
           <span class="tools"> GCC, Grub </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
       <div class="row">
@@ -515,8 +586,9 @@
 
         </div>
         <div class="three columns">
-          <h3>&nbsp;</h3>
+          <h3 class="hide-for-small">&nbsp;</h3>
           <span class="tools"> Computer sciences </span>
+          <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
     </div>
