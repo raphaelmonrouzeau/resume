@@ -184,7 +184,7 @@
           des redirections HTTP/HTTPS et régulièrement tenter d'accéder au
           résultat des POST des iframes, etc. </p>
 
-          <h3>Optimisation</h3>
+          <h4>Utilisation de memcached</h4>
 
           <p> Il y avait un autre problème sur le formulaire
           d'authentification, il consommait trop de CPU. J'ai suggéré
@@ -243,15 +243,15 @@
           conclu accord. </p>
           
           <p> J'avais pour tâche le «&#8239;backend&#8239;» de cette
-          application mobile, it was federating the catalogs of the providers
-          calling their API on the flow (caching results that depend on the
-          location and search query of the users is quite ambitious), detecting
-          similar products, indicating physical shops locations, proposing
-          offers on similar products online... </p>
+          application mobile, qui devait en temps réel fédérer les catalogues
+          des différents fournisseurs de données (cacher des résultats de
+          recherche géolocalisés aurait été inutile), détecter les produits
+          similaires, en faire des vues avec les possibilités d'achat on-line,
+          proche de soi, dans quelle boutique, les stocks, etc. </p>
         
-          <p> I had to modify the Node.JS daemonize2 library for my control
-          tool to well pass arguments to the future daemon (patch on Github).
-          </p>
+          <p> Il a fallu que je modifie la librairie daemonize2 pour que
+          l'outil de contrôle du daemon passe correctement les arguments en
+          ligne de commande au service (patch disponible sur Github). </p>
 
         </div>
 
@@ -270,18 +270,23 @@
 
           <h3>SFR mobile security</h3>
 
-          <p> SFR made a software suite featuring various services like Find My
-          Phone, Lock My Phone, etc. And backups/restore from any supported
-          phone to any other (i.e. iPhone to Android works). </p>
+          <p> SFR a produit une suite de logiciels et de services relatifs à la
+          sécurité des périphériques mobiles et de leurs données (trouver son
+          téléphone, le verrouiller, sauvegarder son carnet d'adresse, ses
+          SMS… et les restaurer sur un autre téléphone, y compris d'un iPhone
+          vers un Android). </p>
          
-          <p> I was in charge of the backend for storage, retrieval and search
-          of these backups. Only some metadata were searchable as backups are
-          encrypted mobile side, and key management is another service. </p>
+          <p> J'avais pour tâche la maintenance et l'évolution du backend de
+          stockage, recherche et récupération des données. Les données étaient
+          chiffrées par les périphériques, qui pouvait les récupérer en
+          fournissant un ticket obtenu auprès d'un autre service, selon un
+          mécanisme ressemblant à Kerberos. </p>
         
-          <p> I had to modify Tornado to be able to log all events of the life
-          of the connection, including reveiving frames, I also had to modify a
-          daemonize python library so that we could use the fab module to start
-          server by SSH. </p>
+          <p> J'ai pour ce projet été obligé de modifier Tornado afin de noter
+          dans les logs tous les évènements relatifs à la vie des connections,
+          réceptions de paquets comprises. J'ai aussi été obligé de modifier la
+          librairie daemonize de python afin que le script fab utilisé en tant
+          que module soit capable de lancer le serveur à travers SSH. </p>
 
         </div>
         <div class="three columns">
@@ -298,7 +303,7 @@
   </div>
   <div class="row">
     <div class="three columns">
-      <h4>Lead developer</h4>
+      <h4>Développeur en chef</h4>
       <div>miLibris</div>
       <div>Paris</div>
       <div>dec 2009 – feb 2012</div>
@@ -309,14 +314,23 @@
 
           <h3>Cryptent</h3>
 
-          <p> For comic books, newspapers and magazines. Decrypted at runtime,
-          in memory, only what was in use. </p>
+          <p> J'ai réalisé une DRM pour les contenus écrits numériques (bandes
+          dessinées, livres et journaux/magazines), fonctionnant sur iOS et
+          Android. Réalisée en C elle utilise une clé polymorphique. Il faut en
+          effet être capable de modifier l'algorithme de chiffrement (pour
+          rester en avance sur les indiscrets) mais permettre au consommateur
+          de pouvoir lire les contenus chiffrés avec les anciennes versions de
+          l'algorithme (sans retéléchargement). La DRM ne déchiffrait que ce
+          dont les programmes de lecture avaient besoin, au moment où ils en
+          avaient besoin, elle ne conservait rien sur disque ou espace de swap
+          mais pouvait garder en mémoire uniquement un cache de blocs
+          semi-déchiffrés sur certains périphériques. </p>
 
         </div>
         <div class="three columns">
           <h3 class="hide-for-small">&nbsp;</h3>
           <span class="languages"> C, Objective C,</span>
-          <span class="platforms"> iOS, Android, </span>
+          <span class="platforms"> iOS, Android, NDK, </span>
           <span class="tools"> xCode </span>
           <h3 class="show-for-small">&nbsp;</h3>
         </div>
@@ -326,12 +340,15 @@
 
           <h3>Publication</h3>
 
-          <p> Built and maitained the first and second versions of the platform
-          for e-reading (leader in France). Servers configuration was
-          automated, catalog views for each consumer and user-generated events
-          were stored in NoSQL while master data were stored in PostgreSQL.
-          There was monitoring, web admin interface as an single-page "app",
-          backups...  </p>
+          <p> J'ai construit et maintenu les première et seconde version de la
+          plate-forme pour la lecture en numérique (leader français). La
+          configuration des serveurs était automatisée, les catalogues
+          personnels des consommateurs et les évènements liés à la lecture
+          étaient stockés dans du NoSQL tandis que les données maître étaient
+          stockées dans PostgreSQL. Il y avait un monitoring, une interface
+          d'administration web pour les fournisseurs, les distributeurs ou les
+          vendeurs (en tant qu'application web «single page»), des backups…
+          </p>
 
         </div>
         <div class="three columns">
@@ -347,19 +364,22 @@
       <div class="row">
         <div class="nine columns">
 
-          <h3>Steganography</h3>
+          <h3>Stéganographie</h3>
 
-          <p> I decided to embed steganographically an user id code into ePubs
-          available on the web after customer reports that their content was
-          redistributed illegally. </p>
+          <p> Des clients nous avaient rapporté que leurs contenus étaient
+          redistribués illégalement. J'ai imaginé et implémenté comme solution
+          d'intégrer stéganographiquement un marqueur dépendant de
+          l'utilisateur au sein des ePubs que nous distribuions. </p>
 
-          <p> I didn't want to store content in one version for each content
-          subscriber. And I didn't want to dynamically apply steganography then
-          repackage content before user was accepted to download. So I resorted
-          to create a fixed number of versions, configurable, depending upon
-          the number of suscribers, and assigned one version to each suscriber.
-          This didn't permit to detect the offender on its first injury but
-          three times showed enough. </p>
+          <p> Je ne voulais pas stocker les contenus en autant de versions
+          qu'il y avait de personnes ayant le droit de télécharger les ePubs.
+          Et je ne voulais pas, à chaque téléchargement, réempaqueter les ePubs
+          après les avoir marqué. J'ai donc décidé de créer un certain nombre,
+          configurable, d'ePubs pour chaque contenu. Chaque ayant-droit de
+          consultation était assigné une de ces versions. Cela ne permettait
+          pas de déterminer à coup sur qui avait partagé le contenu la première
+          fois qu'il en partageait un, mais au bout du troisième contenu qu'il
+          partageait le responsable était à coup sur identifié. </p>
 
         </div>
         <div class="three columns">
@@ -374,7 +394,7 @@
   </div>
   <div class="row">
     <div class="three columns">
-      <h4>Lead developer</h4>
+      <h4>Développeur en chef</h4>
       <div>IC4E</div>
       <div>St Petersbourg (Russian federation)</div>
       <div>apr 2008 – dec 2009</div>
@@ -385,17 +405,25 @@
 
           <h3>&nbsp;</h3>
 
-          <p> IC4E is an american company operating in Russia, they needed
-          their customers to be able to browse their ever growing catalog and
-          choose the videos they wanted to broadcast. Before that content was
-          identified by phone discussion then DAT tapes were mailed. </p>
+          <p> IC4E est une compagnie américaine mais qui opère en Russie. Ils
+          avaient besoin que leurs clients soient capables de consulter en
+          ligne leur catalogue tous les jours grandissant. Il fallait aussi
+          qu'ils puissent choisir les vidéos ou les extraits de vidéo dont ils
+          achetaient les droits et qu'ils allaient transmettre. Avant cela les
+          contenus étaient identifiés et choisis par téléphone et des cassettes
+          DAT étaient envoyées par courrier. </p>
 
-          <p> I wrote a backend system where people were able to see
-          automatically generated screenshots, snippets and request creation of
-          a DRM encoded video or mail of a tape. They were able to choose
-          timeframes of content that would be collected onto a single tape.
-          Thus if mailed they received the minimum number of tapes and no
-          content they didn't buy rights on. </p>
+          <p> J'ai réalisé une plate-forme web où les clients étaient capables
+          de consulter le catalogue, avec des captures automatiquement générées
+          et des extraits (avec les timestamps). Il était possible ensuite de
+          commander le téléchargement de vidéos protégées par DRM ou l'envoi de
+          cassettes DAT qui comprenaient l'ensemble mais seulement cet ensemble
+          des extraits ou contenus spécifiés. </p>
+
+          <p> J'ai aussi réalisé un second site sur lequel les producteurs de
+          contenus pouvaient envoyer leurs contenus et les ranger, ainsi
+          qu'organiser leur page, les extraits et les captures à promouvoir.
+          </p>
 
         </div>
         <div class="three columns">
@@ -419,14 +447,16 @@
       <div class="row">
         <div class="nine columns">
 
-          <h3>System administration</h3>
+          <h3>Administration système</h3>
 
-          <p> Maintained websites of Quidea, Inc. Including
-          "commentcamarche.net" (which translates as "how does that work"),
-          ranked 47 on Alexa. Spawned three datacenters, multiple routers. </p>
+          <p> J'ai maintenu les sites webs de Quidea, Inc. Y compris
+          "commentcamarche.net", à l'époque numéro 47 sur Alexa. L'architecture
+          était répartie sur trois centres de données, avec plusieurs routeurs,
+          des NAS, du laod-balancing niveau 7 matériel, etc. </p>
 
-          <p> Also maintained the websites of other big accounts (including bugbuster) as well and developped some
-          websites. Made some VoIP along the way.  </p>
+          <p> J'ai aussi maintenu les sites webs de nos autres clients, dont
+          bugbusters, et deeveloppé pour eux des applications de VoIP et des
+          services à destination de leurs sites webs. </p>
 
         </div>
         <div class="three columns">
@@ -453,15 +483,16 @@
 
           <h3>ZenSSL</h3>
 
-          <p> Another company was creating an SSL reverse proxy appliance. We
-          were in charge of developping the linux driver for the crypto
-          accelerating card that powered the future appliance, and a
-          cryptoengine for OpenSSL. </p>
+          <p> Zencod était fournisseur de solutions tout en un de
+          «reverse-proxies» SSL. Ils nous ont chargé de développer le driver
+          Linux d'une carte accélératrice de cryptographie qu'ils comptaient
+          inclure dans leur solution. Il a aussi fallu que nous écrivions le
+          «crypto engine» pour OpenSSL. </p>
 
         </div>
         <div class="three columns">
           <h3 class="hide-for-small">&nbsp;</h3>
-          <span class="languages"> C, x86/i386 ASM/Assembly </span>
+          <span class="languages"> C, x86/i386 ASM/Assembleur </span>
           <span class="platforms"> Linux </span>
           <span class="tools"> GCC </span>
           <h3 class="show-for-small">&nbsp;</h3>
@@ -472,11 +503,12 @@
 
           <h3>Safetender</h3>
 
-          <p> Wrote a solution for managing requests for tender complying
-          with french laws. It followed the same workflow than usually, but
-          everything was dematerialized (e-mails instead of mails) and
-          cryptographically secure (safes were replaced with encryption).
-          </p>
+          <p> J'ai réalisé une solution de gestion électronique d'appels
+          d'offres publiques. Le premier client était la communauté
+          d'agglomération du Val-de-Bièvre. Le processus était le même que dans
+          les cas classiques mais les lettre étaient remplacées par des emails,
+          les signatures et tampons étaient remplacées par des certificats/clés
+          PGP et l'encryption tenait le rôle de coffre-fort. </p>
 
         </div>
         <div class="three columns">
@@ -492,21 +524,23 @@
 
           <h3> Safeboot </h3>
 
-          <p> "Gendarmerie" (French army corpse dedicated to enforcement of
-          the law on rural territory) declared they were in need of a
-          solution to secure their Windows installations from the boot time.
-          Solution involved a custom Debian installation CD (based on
-          debian-installer, new at the time) and two grub modules: one to
-          handle a USB mouse with fingerprint and pin readers, another to
-          cipher/uncipher hard drive content before booting Windows. </p>
+          <p> La Gendarmerie Nationale nous a informé qu'ils avaient besoin
+          d'une solution pour sécuriser leurs installations nomades de Windows,
+          à partir du démarrage. La solution que nous avons commencé à réaliser
+          comprenait un CD-ROM d'installation de Debian modifié. Basé sur
+          debian-installer qui venait de sortir. Et deux modules Grub: un
+          driver d'une souris USB qui faisait aussi lecteur d'empreinte
+          digitale et lecteur de code PIN. Et un pour déchiffrer le contenu du
+          disque dur pour la première partie du démarrage de Windows. </p>
 
-          <p> A prototype was made and shown but Gendarmerie's budget lines
-          for the project were cancelled. </p>
+          <p> Un prototype a été réalisé et montré mais la Gendarmerie n'a
+          finalement pas donné suite à cette étude pour des raisons de budget
+          et le projet fût finalement annulé. </p>
 
         </div>
         <div class="three columns">
           <h3 class="hide-for-small">&nbsp;</h3>
-          <span class="languages"> C, x86/i386 ASM/Assembly </span>
+          <span class="languages"> C, x86/i386 ASM/Assembleur </span>
           <span class="platforms"> Linux, Grub, Windows </span>
           <span class="tools"> Debian installer </span>
           <h3 class="show-for-small">&nbsp;</h3>
@@ -515,13 +549,13 @@
       <div class="row">
         <div class="nine columns">
 
-          <h3> Sysop </h3>
+          <h3> Administration système </h3>
 
-          <p> Helped maintain websites and mailing-lists of the portfolio of
-          customers of Omatis including MCM and all the other cable
-          channels of the MCM group. </p>
+          <p> J'ai aidé au maintien des sites webs et des serveurs de mails et
+          mailing-lists des clients d'Omatis. En particulier de MCM et et des
+          autres chaînes cablées du groupe MCM. </p>
 
-          <p> This was my first experience of high traffic websites. </p>
+          <p> Ce fût ma première expérience de sites webs à haut traffic. </p>
 
         </div>
         <div class="three columns">
@@ -536,7 +570,7 @@
   </div>
   <div class="row">
     <div class="three columns">
-      <h4>Intern</h4>
+      <h4>Stagiaire</h4>
       <div>Caisses d'Épargne (CTRCEAPC)</div>
       <div>Bordeaux</div>
       <div>jun 2002 – nov 2002</div>
@@ -545,20 +579,21 @@
       <div class="row">
         <div class="nine columns">
 
-          <h3> Support of the law of <em>35 heures</em></h3>
+          <h3> Support des 35 heures</h3>
 
-          <p> Reverse-enginered a DOS application which controlled doorlocks
-          and card readers and inputed entries and exits into the human
-          resources software. </p>
+          <p> J'ai du faire de l'ingénierie inverse sur une application DOS qui
+          controllait les serrures et les lecteurs de cartes des portes
+          d'entrée et sur l'application de comptabilité des congés. </p>
 
-          <p> Made it compatible with the new law and accept vacancies orders
-          from a Lotus domino database. Then did most of the backend code
-          for the vacancy requests forms. </p>
+          <p> J'y ai ajouté le support des 35 heures et des journées de RTT.
+          J'ai aussi créé le formulaire de demande de ces RTT et leur stockage
+          au sein de Lotus domino, avec export vers le logiciel DOS pré-cité.
+          </p>
 
         </div>
         <div class="three columns">
           <h3 class="hide-for-small">&nbsp;</h3>
-          <span class="languages"> x86/i386 ASM/Assembly, Lotuscript </span>
+          <span class="languages"> x86/i386 ASM/Assembleur, Lotuscript </span>
           <span class="platforms"> DOS, Windows </span>
           <span class="tools"> Edit, Domino designer, NASM </span>
           <h3 class="show-for-small">&nbsp;</h3>
@@ -574,7 +609,7 @@
     <a href="#education"><h2>Education and Training</h2></a>
     <div class="three columns">
         <!-- <h4>-- Engineering degree in -- Masters of Computer Sciences</h4> -->
-      <h4>Student, Paris</h4>
+      <h4>Étudiant, Paris</h4>
       <div>Epitech</div>
       <div>Paris</div>
       <div>2002-2004</div>
@@ -584,16 +619,20 @@
       <div class="row">
         <div class="nine columns">
 
-          <h3>Masters of Computer Sciences</h3>
+          <h3>Expertise en informatique</h3>
             
-          <p> The last two years let students choose the subject of their final
-          project. For us it was Zetein, an L4 compatible micro-kernel whose
-          messages are LISP data and services are written in Scheme. </p>
+          <p> Les deux dernières années laissent la part belle au projet de fin
+          d'études dont le choix était laissé libre aux étudiants. Notre équipe
+          de quatres personnes se lança dans l'écriture de Zetein, un système
+          d'exploitation avec un micro-kernel compatible L4 et des messages
+          dont le format était le même qu'un service d'interprétation LISP
+          (Scheme) qui servait à écrire la plupart des services et
+          applications. </p>
 
         </div>
         <div class="three columns">
           <h3 class="hide-for-small">&nbsp;</h3>
-          <span class="languages"> C, LISP, Scheme, Assembly, </span>
+          <span class="languages"> C, LISP, Scheme, x86/i386 ASM/Assembleur, </span>
           <span class="platforms"> L4, </span>
           <span class="tools"> GCC, Grub </span>
           <h3 class="show-for-small">&nbsp;</h3>
@@ -602,16 +641,18 @@
       <div class="row">
         <div class="nine columns">
 
-          <h3>Bachelor of Computer Sciences</h3>
+          <h3>Bachelor en informatique</h3>
 
-          <p> My school had a rather unusual way of teaching. Everything was
-          project driven, in teams, everyone in team had the same mark and
-          sometimes teams were randomly assigned. </p>
+          <p> Mon école avait une pédagogie originale. Des examens réguliers
+          devant un poste de travail et corrigés par le compilateur et une
+          moulinette. Pour le reste, des projets, toujours en équipes, des fois
+          aléatoires. La notation était ternaire: -42 pour les tricheurs, 0 si
+          il y avait une erreur, 20 sinon. </p>
 
         </div>
         <div class="three columns">
           <h3 class="hide-for-small">&nbsp;</h3>
-          <span class="tools"> Computer sciences </span>
+          <span class="tools"> Informatique, Travail en équipe </span>
           <h3 class="show-for-small">&nbsp;</h3>
         </div>
       </div>
