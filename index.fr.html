@@ -1,0 +1,622 @@
+---
+---
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="fr"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8"/>
+  <!-- Thanks to http://cdolivei.github.io/resume/ and his blog post -->
+  <!-- Use latest IE rendering mode available or chrome-frame if installed -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+  <title>CV | Curriculum Vitae de Raphaël Monrouzeau</title>
+  <meta name="description" content="CV de Raphaël Monrouzeau" />
+  <meta name="keywords" content="CV ingénieur informatique" />
+  <meta name="author" content="Raphaël Monrouzeau" />
+  <link rel="stylesheet" href="css/templates.css">
+  <link rel="stylesheet" href="css/moar.css">
+  <!-- <link rel="stylesheet" href="css/normalize.css" media="all"/>
+       <link rel="stylesheet" href="css/web.css" media="screen"/>
+       <link rel="stylesheet" href="css/print.css" media="print"/> -->
+    
+  <script type="text/javascript">
+    // IE 8+ fix: http://blog.whatwg.org/supporting-new-elements-in-ie#comment-40743
+    document.createElement("header");
+    document.createElement("section");
+  </script>
+</head>
+<body>
+
+  <!--
+  <p class="show-for-small       "> show for small (&lt; 768px) </p>
+  <p class="show-for-medium-down "> show for medium down (&lt; 1280px) </p>
+  <p class="show-for-medium      "> show for medium (768px - 1280px) </p>
+  <p class="show-for-medium-up   "> show for medium up (&gt;= 768px) </p>
+  <p class="show-for-large-down  "> show for large down (&lt; 1440px) </p>
+  <p class="show-for-large       "> show for large (1280px - 1440px) </p>
+  <p class="show-for-large-up    "> show for large up (&gt;= 1280px) </p>
+  <p class="show-for-xlarge      "> show for xlarge (&gt;= 1440px) </p>
+  -->
+ <!-- medium down = 768px) </p> -->
+ <!-- large down 1280px) </p> -->
+
+  <!-- Header and Nav -->
+  <header class="row" class="panel" style="text-align: center">
+    <h1>Raphaël <span style="font-variant: small-caps">Monrouzeau</span></h1>
+    <h2>Ingénieur / Consultant en Informatique</h2>
+    <div>{% include contact.html %}</div>
+  </header>
+  <!-- End Header and Nav -->
+
+  <section class="technical">
+  <div class="row">
+    <h2>Compétences techniques</h2>
+    <table style="margin: 2em auto">
+      <tr>
+        <td>Languages&nbsp;de&nbsp;programmation&#8239;:&nbsp;</td>
+        <td>C / C++, Python, JavaScript, Scheme / Lisp, Haskell, Go, various assembly languages, Shell script, Perl,PHP...</td>
+      </div>
+      <tr>
+        <td>Autres&nbsp;compétences&#8239;:&nbsp;</td>
+        <td>HTML[5], CSS, jQuery, Django, MySQL / PostgreSQL / Redis / MongoDB, Git / Mercurial / Subversion, Puppet / Chef / Ansible / Salt</td>
+      </tr>
+      <tr>
+        <td>Systèmes&nbsp;d'exploitation&#8239;:&nbsp;</td>
+        <td>Unix/Linux, Mac</td>
+      </tr>
+    </table>
+  </div>
+  </section>
+  
+  <section class="experience" id="experience">
+  <div class="row">
+    <a href="#experience"><h2>Expériences de travail</h2></a>
+    <div class="three columns">
+      <h4>Consultant</h4>
+      <div>Orange</div>
+      <div>Paris</div>
+      <div>oct 2012 – actuellement</div>
+    </div>
+    <div class="nine columns">
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>Pilotd</h3>
+
+          <p> Un reverse-proxy envers les services d'accès aux données, il
+          dialogue avec les différents services SOAP du groupe et traduit les
+          résultats en JSON. </p>
+            
+          <p> Il tourne en tant que service et accepte des requêtes HTTP. Il
+          permet à l'équipe de ne pas avoir à écrire de librairies dans chacun
+          des languages utilisés. Il écoute par défaut sur l'interface de
+          loopback, limitant ainsi au maximum le coût des IPC dans les
+          transactions. </p>
+          
+          <p> Les services frontaux peuvent l'utiliser sans avoir besoin de
+          dépendances supplémentaires (HTTP et JSON) et de supporter les
+          fonctionalités d'un client SOAP. Son API est plus centrée sur leurs
+          besoins. Ils n'ont du coup pas ou peu besoin d'une couche
+          d'encapsulation et utilisent le service comme une librairie. </p>
+          
+          <p> Néanmoins en tant que service il est possible d'avoir plusieurs
+          instances en cours, de versions différentes, accessibles sans
+          recompilation, sans mise à jour ou même sans redémarrage des services
+          frontaux; rendant les migrations faciles, mêmes les partielles (i.e.
+          une partie des services frontaux seulement). </p> 
+
+          <p> Enfin, il est écrit en C, pèse moins d'un mégaoctet et est
+          compilé statiquement pour simplifier les problématiques de
+          déploiement. Son architecture est inspirée des services des
+          micro-kernels. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> C, </span>
+          <span class="tools"> libuv </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>Serveur d'évènement</h3>
+
+          <p> «&#8239;Serveur d'évènement&#8239;» est le nom qu'on lui donne
+          mais il s'agit plus d'un équivalent de Zookeeper que d'un serveur
+          d'évènement classique. La version précédente stockait les évènements
+          en trois tables MySQL: services, identités, évènements et supportait
+          mal la charge bien qu'il soit un FCGI codé en C++. </p>
+
+          <p> J'ai eu pour tâche de réécrire le «&#8239;backend&#8239;». Les
+          évènements (des conditions en fait) sont stockées dans une seule
+          table, sa clé primaire est textuelle et un produit du service et de
+          l'identité. Aussi, plutôt que d'avoir une ligne par test de la
+          condition et de compter les lignes pour savoir si les conditions sont
+          remplies un compteur est maintenu à jour, la condition étant remplie
+          lorsque ce compteur passe à 0 ou en-dessous. </p>
+
+          <p> Ces changements avec les changements correspondants dans la
+          partie C++ du produit ont permis à ce composant de supporter la
+          charge combinée des services de SMS payants et de
+          «&#8239;blacklistage&#8239;» sur les formulaires d'authentification
+          et de récupération de mot de passe. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> C++, </span>
+          <span class="databases"> MySQL, </span>
+          <span class="tools"> Apache, mod_fcgid </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>Formulaire d'authentification</h3>
+
+          <p> Le nouveau formulaire d'authentification, écrit en PHP, ne
+          fonctionnait qu'en HTTPS mais il a été demandé qu'on puisse afficher
+          de la publicité dessus suivant le service appelant. Les publicités
+          sont souvent remplies d'appels à des ressources extérieures, que les
+          régies ne contrôlent pas forcément, et qui ne sont pas toutes
+          disponibles en HTTPS. </p>
+          
+          <p> La seule solution viable qui restait était de rendre le service
+          compatible HTTPS et HTTP, ce qui peut sembler simple, sauf que:</p>
+         
+          <ul>
+            <li> en HTTP le POST doit s'effectuer en HTTPS, </li>
+            <li> il doit être possible de s'authentifier que Javascript soit activé ou non, </li>
+            <li> le navigateur ne doit bien sur pas afficher de message d'avertissement, </li>
+            <li> mais afficher un cadenas vert et fermé, </li>
+            <li> tout cela sur les navigateurs à partie d'IE 6. </li>
+          </ul>
+          
+          <p> Or les navigateurs ont tous des mécanismes de protection variés
+          en nombre et en nature dont le but est d'interdire le type de
+          comportement voulu. Il aura fallu utiliser des iframes vers des
+          sources HTTP vides, copier des formulaires en Javascript, effectuer
+          des redirections HTTP/HTTPS et régulièrement tenter d'accéder au
+          résultat des POST des iframes, etc. </p>
+
+          <h3>Optimisation</h3>
+
+          <p> Il y avait un autre problème sur le formulaire
+          d'authentification, il consommait trop de CPU. J'ai suggéré
+          d'introduire memcache sur la plate-forme et d'y stocker le résultat
+          des appels les plus coûteux du formulaire. Je fus finalement choisi
+          pour accomplir cette tâche. Cela demanda une importante
+          refactorisation du code source du composant et de certaines
+          librairies propriétaires. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> PHP, Javascript, </span>
+          <span class="databases"> Memcached, </span>
+          <span class="tools"> Apache, mod_fcgid / FCGI </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>Formulaire d'authentification télé</h3>
+
+          <p> Il était impératif pour Orange, premier fournisseur d'accès à
+          Internet français, de lancer sa nouvelle «&#8239;box&#8239;» avec la
+          navigation sur Internet et le cloud à partir de la télé. J'ai eu à
+          ajouter le support des télécommandes sur le formulaire
+          d'authentification aux services télévisés. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> Javascript, </span>
+          <span class="tools"> Opera Embedded </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three columns">
+      <h4>Consultant</h4>
+      <div>SFR</div>
+      <div>La Défense</div>
+      <div>feb 2012 – oct 2012</div>
+    </div>
+    <div class="nine columns">
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>SFR Shopping</h3>
+
+          <p> SFR désirait lancer une application mobile avec géolocalisation
+          des offres commerciales proches de leurs clients. En fédérant les
+          offres provenant de différentes sources avec lesquelles ils avaient
+          conclu accord. </p>
+          
+          <p> J'avais pour tâche le «&#8239;backend&#8239;» de cette
+          application mobile, it was federating the catalogs of the providers
+          calling their API on the flow (caching results that depend on the
+          location and search query of the users is quite ambitious), detecting
+          similar products, indicating physical shops locations, proposing
+          offers on similar products online... </p>
+        
+          <p> I had to modify the Node.JS daemonize2 library for my control
+          tool to well pass arguments to the future daemon (patch on Github).
+          </p>
+
+        </div>
+
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> Javascript, </span>
+          <span class="framework"> Node.JS, Express, </span>
+          <span class="databases"> Redis, </span>
+          <span class="platforms"> FreeBSD, </span>
+          <span class="tools"> JSON </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>SFR mobile security</h3>
+
+          <p> SFR made a software suite featuring various services like Find My
+          Phone, Lock My Phone, etc. And backups/restore from any supported
+          phone to any other (i.e. iPhone to Android works). </p>
+         
+          <p> I was in charge of the backend for storage, retrieval and search
+          of these backups. Only some metadata were searchable as backups are
+          encrypted mobile side, and key management is another service. </p>
+        
+          <p> I had to modify Tornado to be able to log all events of the life
+          of the connection, including reveiving frames, I also had to modify a
+          daemonize python library so that we could use the fab module to start
+          server by SSH. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> Python, </span>
+          <span class="framework"> Tornado, </span>
+          <span class="databases"> MongoDB, </span>
+          <span class="platforms"> FreeBSD, </span>
+          <span class="tools"> Fab </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three columns">
+      <h4>Lead developer</h4>
+      <div>miLibris</div>
+      <div>Paris</div>
+      <div>dec 2009 – feb 2012</div>
+    </div>
+    <div class="nine columns">
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>Cryptent</h3>
+
+          <p> For comic books, newspapers and magazines. Decrypted at runtime,
+          in memory, only what was in use. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> C, Objective C,</span>
+          <span class="platforms"> iOS, Android, </span>
+          <span class="tools"> xCode </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>Publication</h3>
+
+          <p> Built and maitained the first and second versions of the platform
+          for e-reading (leader in France). Servers configuration was
+          automated, catalog views for each consumer and user-generated events
+          were stored in NoSQL while master data were stored in PostgreSQL.
+          There was monitoring, web admin interface as an single-page "app",
+          backups...  </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> Python, Javascript, </span>
+          <span class="framework"> Pyramid, Node.JS, jQuery, Capuccino, </span>
+          <span class="databases"> PostgreSQL, MongoDB, </span>
+          <span class="platforms"> Linux, </span>
+          <span class="tools"> Puppet, Git </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>Steganography</h3>
+
+          <p> I decided to embed steganographically an user id code into ePubs
+          available on the web after customer reports that their content was
+          redistributed illegally. </p>
+
+          <p> I didn't want to store content in one version for each content
+          subscriber. And I didn't want to dynamically apply steganography then
+          repackage content before user was accepted to download. So I resorted
+          to create a fixed number of versions, configurable, depending upon
+          the number of suscribers, and assigned one version to each suscriber.
+          This didn't permit to detect the offender on its first injury but
+          three times showed enough. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> Python, </span>
+          <span class="platforms"> Linux, </span>
+          <span class="tools"> Steghide </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three columns">
+      <h4>Lead developer</h4>
+      <div>IC4E</div>
+      <div>St Petersbourg (Russian federation)</div>
+      <div>apr 2008 – dec 2009</div>
+    </div>
+    <div class="nine columns">
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>&nbsp;</h3>
+
+          <p> IC4E is an american company operating in Russia, they needed
+          their customers to be able to browse their ever growing catalog and
+          choose the videos they wanted to broadcast. Before that content was
+          identified by phone discussion then DAT tapes were mailed. </p>
+
+          <p> I wrote a backend system where people were able to see
+          automatically generated screenshots, snippets and request creation of
+          a DRM encoded video or mail of a tape. They were able to choose
+          timeframes of content that would be collected onto a single tape.
+          Thus if mailed they received the minimum number of tapes and no
+          content they didn't buy rights on. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> C, Objective C,</span>
+          <span class="platforms"> Linux, Windows </span>
+          <span class="tools"> Script.aculo.us, Windows DRM server </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three columns">
+      <h4>Founder</h4>
+      <div>NNK</div>
+      <div>La Défense</div>
+      <div>jul 2006 – apr 2008</div>
+    </div>
+    <div class="nine columns">
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>System administration</h3>
+
+          <p> Maintained websites of Quidea, Inc. Including
+          "commentcamarche.net" (which translates as "how does that work"),
+          ranked 47 on Alexa. Spawned three datacenters, multiple routers. </p>
+
+          <p> Also maintained the websites of other big accounts (including bugbuster) as well and developped some
+          websites. Made some VoIP along the way.  </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> PHP, </span>
+          <span class="databases"> MySQL, </span>
+          <span class="platforms"> Linux, </span>
+          <span class="tools"> Foundry, Nagios, Asterisk, Munin, Cacti </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three columns">
+      <h4>Lead developer</h4>
+      <div>Omatis</div>
+      <div>Paris</div>
+      <div>mar 2004 – jun 2006</div>
+    </div>
+    <div class="nine columns">
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>ZenSSL</h3>
+
+          <p> Another company was creating an SSL reverse proxy appliance. We
+          were in charge of developping the linux driver for the crypto
+          accelerating card that powered the future appliance, and a
+          cryptoengine for OpenSSL. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> C, x86/i386 ASM/Assembly </span>
+          <span class="platforms"> Linux </span>
+          <span class="tools"> GCC </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>Safetender</h3>
+
+          <p> Wrote a solution for managing requests for tender complying
+          with french laws. It followed the same workflow than usually, but
+          everything was dematerialized (e-mails instead of mails) and
+          cryptographically secure (safes were replaced with encryption).
+          </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> Shell script, Perl </span>
+          <span class="platforms"> Linux </span>
+          <span class="tools"> QMail, vpopmail, ezmlm </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nine columns">
+
+          <h3> Safeboot </h3>
+
+          <p> "Gendarmerie" (French army corpse dedicated to enforcement of
+          the law on rural territory) declared they were in need of a
+          solution to secure their Windows installations from the boot time.
+          Solution involved a custom Debian installation CD (based on
+          debian-installer, new at the time) and two grub modules: one to
+          handle a USB mouse with fingerprint and pin readers, another to
+          cipher/uncipher hard drive content before booting Windows. </p>
+
+          <p> A prototype was made and shown but Gendarmerie's budget lines
+          for the project were cancelled. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> C, x86/i386 ASM/Assembly </span>
+          <span class="platforms"> Linux, Grub, Windows </span>
+          <span class="tools"> Debian installer </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nine columns">
+
+          <h3> Sysop </h3>
+
+          <p> Helped maintain websites and mailing-lists of the portfolio of
+          customers of Omatis including MCM and all the other cable
+          channels of the MCM group. </p>
+
+          <p> This was my first experience of high traffic websites. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> Bourne shell script, Perl </span>
+          <span class="platforms"> Gentoo Linux, Debian, NetBSD </span>
+          <span class="tools"> Apache, Heartbeat (Linux HA), Qmail, PureFTPd </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three columns">
+      <h4>Intern</h4>
+      <div>Caisses d'Épargne (CTRCEAPC)</div>
+      <div>Bordeaux</div>
+      <div>jun 2002 – nov 2002</div>
+    </div>
+    <div class="nine columns">
+      <div class="row">
+        <div class="nine columns">
+
+          <h3> Support of the law of <em>35 heures</em></h3>
+
+          <p> Reverse-enginered a DOS application which controlled doorlocks
+          and card readers and inputed entries and exits into the human
+          resources software. </p>
+
+          <p> Made it compatible with the new law and accept vacancies orders
+          from a Lotus domino database. Then did most of the backend code
+          for the vacancy requests forms. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> x86/i386 ASM/Assembly, Lotuscript </span>
+          <span class="platforms"> DOS, Windows </span>
+          <span class="tools"> Edit, Domino designer, NASM </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </section>
+
+  <section class="education" id="education">
+  <div class="row">
+    <a href="#education"><h2>Education and Training</h2></a>
+    <div class="three columns">
+        <!-- <h4>-- Engineering degree in -- Masters of Computer Sciences</h4> -->
+      <h4>Student, Paris</h4>
+      <div>Epitech</div>
+      <div>Paris</div>
+      <div>2002-2004</div>
+      <div>1999-2002</div>
+    </div>
+    <div class="nine columns">
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>Masters of Computer Sciences</h3>
+            
+          <p> The last two years let students choose the subject of their final
+          project. For us it was Zetein, an L4 compatible micro-kernel whose
+          messages are LISP data and services are written in Scheme. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="languages"> C, LISP, Scheme, Assembly, </span>
+          <span class="platforms"> L4, </span>
+          <span class="tools"> GCC, Grub </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nine columns">
+
+          <h3>Bachelor of Computer Sciences</h3>
+
+          <p> My school had a rather unusual way of teaching. Everything was
+          project driven, in teams, everyone in team had the same mark and
+          sometimes teams were randomly assigned. </p>
+
+        </div>
+        <div class="three columns">
+          <h3 class="hide-for-small">&nbsp;</h3>
+          <span class="tools"> Computer sciences </span>
+          <h3 class="show-for-small">&nbsp;</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+</body>
+</html>
